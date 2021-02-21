@@ -1,0 +1,219 @@
+# Hardware basics
+## CPU
+![](https://gitlab.dclabra.fi/wiki/uploads/upload_50eeca64cb63443a4bb6e214f7c072e1.png)
+* The Arithmetic/Logic Unit (ALU)
+    * ALU contains the electronic circuitry that executes all arithmetic and logical operations
+    * As its name implies, the arithmetic/logic unit also performs logical operations
+    * A logical operation is usually a comparison
+    * The unit can compare numbers, letters, or special character
+    * The computer can then take action based on the result of the comparison
+* Bus Interface Unit (BIU)
+    * Supervises data transfers over the bus system between the CPU and I/O devices
+* Control Unit
+    * The control unit of the CPU contains circuitry that uses electrical signals to direct the entire computer system to carry out, or execute stored program instructions
+    * Like an orchestra leader, the control unit does not execute program instructions; rather, it directs other parts of the system to do so
+    * The control unit must communicate with both the arithmetic/logic unit and memory
+* Decode Unit
+    * Converts incoming instructions into individual CPU commands
+* Floating Point Unit (FPU)
+    * Handles higher math operations for the ALU and control unit
+* Memory Management Unit (MMU):
+    * Handles addressing and cataloging of data stored in memory
+    * Translates logical addressing into physical addressing
+* Pre-Fetch Unit
+    * Preloads instructions into CPU registers
+* Protection Test Unit (PTU)
+    * Monitors all CPU functions to ensure that they’re properly executed
+* Registers
+    * Registers are temporary storage areas for instructions or data
+    * They are not a part of memory; rather they are special additional storage locations that offer the advantage of speed
+    * Registers work under the direction of the control unit to accept, hold, and transfer instructions or data and perform arithmetic or logical comparisons at high speed
+    * The control unit uses a data storage register the way a storeowner uses a cash register-as a temporary, convenient place to store what is used in transactions
+
+![](https://gitlab.dclabra.fi/wiki/uploads/upload_c48b05124049648c61b75cb5aeb46f48.png)
+
+The four operating states for a computer (CPU) are
+
+1. Operating (or run) state: The CPU executes an instruction or instructions.
+1. Problem (or application) state: The CPU calculates a solution to an application-based problem. During this state, only a limited subset of instructions ( non-privileged instructions) is available.
+1. Supervisory state: The CPU executes a privileged instruction: that is, available only to a system administrator or other authorized user/ process.
+1. Wait state: The CPU hasn’t yet completed execution of an instruction and must extend the cycle.
+
+The two basic types of CPU designs used in modern computer systems are
+
+* Complex-Instruction-Set-Computing (CISC)
+    * Can perform multiple operations per single instruction. Optimized for systems in which the fetch phase is the longest part of the instruction execution cycle.
+* Reduced-Instruction-Set-Computing (RISC)
+    * Uses fewer, simpler instructions than CISC architecture, requiring less clock cycles to execute. Optimized for systems in which the fetch and execute phases are approximately equal.
+
+![](https://gitlab.dclabra.fi/wiki/uploads/upload_c8f611e88b08a3fafac7c6976be4c794.png)
+
+Microprocessors are also often described as scalar or superscalar (no, you can’t tell which they are by looking at them). A scalar processor executes a single instruction at a time. A superscalar processor can execute multiple instructions concurrently.
+
+Finally, many systems (microprocessors) are classified according to additional functionality as follows (must be supported by the installed operating system):
+
+* Multitasking: Alternates execution of multiple subprograms or tasks on a single processor
+* Multiprogramming: Alternates execution of multiple programs on a single processor
+* Multiprocessing: Executes multiple programs on multiple processors simultaneously
+
+Two related concepts are multistate and multiuser systems that, more correctly, refer to operating system capabilities:
+
+
+    Multistate: The operating system supports multiple operating states, such as single-user and multi-user modes in the UNIX/Linux world and Normal and Safe mode in the Windows world.
+    Multiuser: The operating system can differentiate between users. For example, it provides different shell environments, profiles, or privilege levels for each user.
+
+An important security issue in multiuser systems is privileged accounts and programs or processes that run in a privileged state. Programs such as su
+(UNIX/Linux) and RunAs (Windows) allow a user to switch to a different account, such as root or administrator, and execute privileged commands in this context. Many programs rely on privileged service accounts to function properly. Utilities are used to install fixes to the operating system or other applications.
+
+## Bus
+
+The bus is a group of electronic conductors that interconnect the various components of the computer, transmitting signals, addresses, and data between these components. Bus structures are organized as follows:
+
+
+* Data bus
+    * Transmits data between the CPU, memory, and peripheral devices
+* Address bus
+    * Transmits addresses of data and instructions between the CPU and memory
+* Control bus
+    * Transmits control information (device status) between the CPU and other devices
+    * A computer bus is not painted yellow, nor does it have red flashing lights and a stop sign
+
+## Memory
+
+Memory is used to store programs, instructions, and data. The two basic types of physical (or real) memory are
+
+
+* Random Access Memory (RAM): Volatile memory (data is lost if power is removed) that can be directly addressed and stored data can be altered. RAM is typically implemented in a computer architecture as cache memory and primary memory. The two main types of RAM are
+* Dynamic RAM (DRAM) must be refreshed (contents rewritten) every two milliseconds because of capacitance decay. Refreshing is accomplished using multiple clock signals known as multiphase clock signals.
+* Static RAM (SRAM) is faster than DRAM and uses circuit latches to represent data; that is, it doesn’t need to be refreshed. Because SRAM doesn’t need to be refreshed, a single-phase clock signal is used.
+* Read-Only Memory (ROM): Nonvolatile memory (data is retained even if power is removed) that can be directly addressed but stored data can’t be easily altered. ROM is typically implemented in a computer architecture as firmware (as we discuss later in the section “Firmware”). Variations of ROM include
+    * Erasable Programmable Read-Only Memory (EPROM)
+    * Electrically Erasable Programmable Read-Only Memory (EEPROM)
+    * Electrically Alterable Read-Only Memory (EAROM)
+    * Programmable Logic Device (PLD)
+    * Flash Memory
+
+Secondary memory is a variation of these two basic types of physical memory. It provides dynamic storage on nonvolatile magnetic media, such as a hard drive or tape drive (considered sequential memory because data can’t be directly accessed - instead, you must search from the beginning of the tape media). Virtual memory (such as a paging file, swap space, or swap partition) is a type of secondary memory that uses both installed physical memory and available hard drive space to present a larger, apparent memory space to the CPU.
+
+Two important security concepts associated with memory are the protection domain (or protected memory) and memory addressing.
+
+A protection domain prevents other programs or processes from accessing and modifying the contents of address space that’s already been assigned to another active program or process. This protection can be performed by the operating system or implemented in hardware.
+
+Memory space describes the amount of memory available in a computer system (for example, 256MB), whereas address space specifies where memory is located in a computer system (a memory address). Memory addressing describes the method used by the CPU to access the contents of memory. A physical memory address is a hard-coded address assigned to physically installed memory. It can only be accessed by the operating system that maps physical addresses to virtual addresses. A virtual (or symbolic) memory address is the address used by applications (and programmers) to specify a desired location in memory. Common virtual memory addressing modes include
+
+
+* Base addressing: An address used as the origin for calculating other addresses
+* Absolute addressing: An address that identifies a location without reference to a base address - or it may be a base address itself
+* Indexed addressing: Specifies an address relative to an index register. (If the index register changes, the resulting memory location changes)
+* Indirect addressing: The specified address contains the address to the final desired location in memory
+* Direct addressing: Specifies the address of the final desired memory location
+
+Don’t confuse the concepts of virtual memory and virtual addressing. Virtual memory combines physical memory and hard drive space to create more apparent memory (or memory space). Virtual addressing is the method used by applications and programmers to specify a desired location in memory (address space).
+
+## Firmware
+
+Firmware is a program or code that is stored in ROM memory. These types of programs are typically changed infrequently or not at all. A computer’s BIOS is a common example of firmware. Firmware is also found in devices such as digital cameras, DSL routers, and MP3 players.
+
+## Software
+
+ Software includes the operating system and programs or applications that are installed on a computer system. The focus on software in this domain is the operating system.
+
+The operating system (OS) controls a computer’s resources. The four main functions of the operating system are
+
+* Process management
+* I/O device management
+* Memory management
+* File management
+
+## Protection Rings
+
+The operating system knows who and what to trust by relying on rings of protection. Rings of protection work much like your network of family, friends, coworkers, and acquaintances. The people who are closest to you, such as your spouse and family, have the highest level of trust. Those who are distant acquaintances or are unknown to you probably have a lower level of trust. It’s much like the guy you see in New York City on Canal Street trying to sell new Rolex watches for $100; you should have little trust in him and his relationship with the Rolex company!
+
+In reality, the protection rings are conceptual. Figure below shows an illustration of the protection ring schema.
+
+![](https://gitlab.dclabra.fi/wiki/uploads/upload_d29b99abebbba4fba5c405afb7c44186.png)
+
+Inner rings have most privileges. Inner rings can directly access outer rings, but not vice versa. A typical arrangement might be:
+
+
+* Ring 0 : Operating system & Kernel
+* Ring 1 : Remaining parts of operating system
+* Ring 2 : I/O drives and utilities
+* Ring 3 : Applications and programs
+
+## Operating Systems
+
+Operating systems can be in one of several states:
+
+
+* Ready: Ready to resume processing
+* Supervisory: Executing a highly privileged routine
+* ProblemState: Executing an application (working on a problem)
+* WaitState: Waiting for a specific event to complete or resource to become free
+
+An operating system implements security using many mechanisms, including:
+
+
+* Protection Rings
+* Mapping Memory
+* Implementing virtual machines
+* Working in different states
+* Assigning trust levels to each process
+
+## Process Vs Thread
+
+A process is a program in execution with its own address space. Threads are pieces of code executed within a process.
+
+
+## Memory Addressing Modes
+
+* Register: Addresses registers within the CPU
+* Direct: Actual addresses. Usually limited to current memory page
+* Absolute: Address of all primary memory space. Can hit any memory address directly
+* Indexed: Adding contents of addresses in programs instruction to that of a memory (index) register
+* Implied: Operations internal to the processor, such as clearing of a carry bit.
+* Indirect: The address specified in the instruction contains the address where the actual data can be found
+
+## Processing Methods
+
+Some methods to improve system performance at the hardware level are:
+
+
+* Pipelining: Overlapping the steps of different instructions to run close to concurrently
+* CISC: Complex Instruction Set Computer.
+* In earlier technologies, the “fetch” cycle was the slowest port.
+* By packing instructions with several operations, number of fetches were reduced
+* RISC: Reduced instruction set computer.
+* Instructions are simple and require fewer clock cycles
+* Scalar Processor: One instruction at a time
+* Superscalar Processor: Enabled concurrent execute of multiple instructions in some pipeline stage
+* Very Long Instruction Word (VLIW) Processor: A single instruction specifies more than one concurrent operation.
+
+## Trusted Computer Base
+
+The trusted computer base (TCB) is the sum of all the protection mechanisms within a computer and is responsible for enforcing the security policy. This includes hardware, software, controls, and processes. The TCB is responsible for confidentiality and integrity. The TCB is the only portion of a system that operates at a high level of trust. The TCB is tasked with enforcing the security policy. It monitors four basic functions:
+
+
+* Input/output operations
+    * I/O operations are a security concern because operations from the outermost rings might need to interface with rings of greater protection. These cross-domain communications must be monitored.
+* Execution domain switching
+    * Applications running in one domain or level of protection often invoke applications or services in other domains. If these requests are to obtain more sensitive data or service, their activity must be controlled.
+* Memory protection
+    * To truly be secure, the TCB must monitor memory references to verify confidentiality and integrity in storage.
+* Process activation
+    * Registers, process status information, and file access lists are vulnerable to loss of confidentiality in a multiprogramming environment. This type of potentially sensitive information must be protected.
+
+The TCB is tasked with enforcing security policy and the TCB is the sum of all protection mechanisms within a computer system. This includes hardware, firmware, and software.
+
+## Reference Monitor
+
+The TCB monitors the functions in the preceding list to ensure that the system operates correctly and adheres to security policy. The TCB follows the reference monitor concept. The reference monitor is an abstract machine that is used to implement security. The reference monitor’s job is to validate access to objects by authorized subjects. The reference monitor operates at the boundary between the trusted and untrusted realm. The reference monitor has three properties:
+
+* Cannot be bypassed and controls all access
+* Cannot be altered and is protected from modification or change
+* Can be verified and tested to be correct
+
+The reference monitor is much like the bouncer at a club because it stands between each subject and object. Its role is to verify the subject meets the minimum requirements for access to an object, as illustrated in the following picture:
+![](https://gitlab.dclabra.fi/wiki/uploads/upload_427bd9f91edb101e9f12a32e8560810e.png)
+
+
